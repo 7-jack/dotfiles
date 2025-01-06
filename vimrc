@@ -25,12 +25,10 @@ set autoindent
 " Syntax highlighting
 syntax on 
 
-" ** Make backspaces more powerful (ie for Python w issues for autoindent)
+" ** Make backspaces more powerful
 set backspace=indent,eol,start
 
-" Set autoindent (i.e. after pressing enter)
-set autoindent
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle 
 
 set nocompatible "required
@@ -58,6 +56,6 @@ filetype plugin indent on "required
 :set mouse=a
 
 " For Zathura 
+let g:tex_flavor = 'latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_view_zathura_options = '-reuse-instance'
-let g:tex_flavor = 'latex'
