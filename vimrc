@@ -1,16 +1,21 @@
-" line numbers
-set number
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 1. Install vim
+" 2. Install vim-plug (iff the install script below doesn't work)
 
-" leader key remap
-let mapleader=","
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Generic
+
+" Enable line numbers
+set number
 
 " Syntax highlighting
 syntax enable
 
-" Set tabs to be 4 spaces
-set ts=4
+" TODO: leader key remap
+let mapleader=","
 
-" Expand tabs to be spaces
+" Set tabs to be 4 spaces and expand to spaces
+set ts=4
 set expandtab
 
 " Make backspace delete tabs
@@ -22,40 +27,49 @@ set shiftwidth=4
 " Auto indent
 set autoindent
 
-" Syntax highlighting
-syntax on 
-
-" ** Make backspaces more powerful
+" Make backspaces more powerful
 set backspace=indent,eol,start
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle 
-
-set nocompatible "required
-filetype off "required
-
-" runtime path of Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim' "required
-
-" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plugin 'xuhdev/vim-latex-live-preview'
-
-" Rust
-Plugin 'rust-lang/rust.vim'
-
-" vim-tex
-Plugin 'lervag/vimtex'
-
-call vundle#end()
-filetype plugin indent on "required
 
 " Allow mouse/trackpad scrolling
 :set mouse=a
 
-" For Zathura 
-let g:tex_flavor = 'latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_view_zathura_options = '-reuse-instance'
+" Allow ruler info
+:set ruler
+
+" Pretty print
+:set encoding=utf-8
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+
+" Automatic installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+filetype plugin indent on
+
+call plug#begin()
+
+" UltiSnips
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" TODO: want split window?
+let g:UltiSnipsEditSplit="vertical"
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" VimTex
+Plug 'lervag/vimtex'
+
+call plug#end()
+
+" " For Zathura 
+" let g:tex_flavor = 'latex'
+" let g:vimtex_view_method='zathura'
+" let g:vimtex_view_zathura_options = '-reuse-instance'
