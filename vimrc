@@ -38,6 +38,10 @@ set backspace=indent,eol,start
 
 " Pretty print
 :set encoding=utf-8
+
+" wildmenu for file navigation
+set wildmenu
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug
 
@@ -66,10 +70,7 @@ Plug 'rust-lang/rust.vim'
 
 " VimTex
 Plug 'lervag/vimtex'
+let g:vimtex_view_method = 'skim'
 
 call plug#end()
 
-" " For Zathura 
-" let g:tex_flavor = 'latex'
-" let g:vimtex_view_method='zathura'
-" let g:vimtex_view_zathura_options = '-reuse-instance'
