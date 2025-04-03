@@ -1,7 +1,8 @@
 My dotfiles (in progress).
 
 TODOs:
-- Update zshrc 
+- Update zshrc
+- Add latexmk
 
 Useful links:
 - [Awesome dotfiles](https://github.com/webpro/awesome-dotfiles)
